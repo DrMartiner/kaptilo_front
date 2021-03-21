@@ -11,6 +11,15 @@
       </b-row>
       <b-row>
         <b-col class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <ul class="list-unstyled">
+            <li>
+              <b>Original link</b>: <a :href="link.original_link">{{ link.original_link }}</a>
+            </li>
+            <li>
+              <b>Created at</b>: {{ link.created | moment("DD.MM.YYYY, h:mm:ss") }}
+            </li>
+          </ul>
+          <hr>
           <b-table striped hover :items="visits.items" :fields="visits.fields">
             <template #cell(ip)="data">
               {{ data.item.visitor_data.ip }}
@@ -44,6 +53,7 @@ export default {
   name: 'LinkPage',
   data: function() {
     return {
+      link: {},
       visits: {
         items: [],
         fields: [
